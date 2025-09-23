@@ -1,0 +1,36 @@
+.services .hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.ctaButton {
+  background-color: var(--secondary-orange);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.ctaButton:hover {
+  background-color: var(--secondary-orange);
+}
+
+.serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.serviceCard {
+  background-color: var(--cream-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.learnMore {
+  color: var(--secondary-orange);
+  font-weight: bold;
+}
