@@ -25,6 +25,16 @@
   --lotus-cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><text x='8' y='52' font-size='48'>🪷</text></svg>") 16 16, auto;
 }
 
+/* Fluid typography base (clamp) */
+html { font-size: clamp(15px, 0.95vw + 11px, 18px); }
+
+/* Utility visibility helpers */
+.u-hide-mobile { display: initial; }
+
+@media (max-width: 600px) {
+  .u-hide-mobile { display: none !important; }
+}
+
 body {
   font-family: 'Lora', serif;
   color: var(--text-dark);

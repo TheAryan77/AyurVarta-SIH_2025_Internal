@@ -249,3 +249,31 @@ z-index: 2000;
   opacity: 1; pointer-events: auto;
   }
 }
+
+/* Narrow phone tweaks */
+@media (max-width: 600px) {
+  .header { grid-template-columns: auto 1fr auto; padding: 10px 16px; }
+  .brand { font-size: 18px; }
+  .logoWrap { width: 40px; height: 40px; }
+  .logoImg { width: 36px; height: 36px; }
+  .navLink { font-size: 16px; padding: 8px 6px; }
+  .dropdownMenu { padding-top: 2px; }
+  .rightGroup { gap: 6px; }
+  .loginBtn, .dashBtn { padding: 6px 10px; font-size: 13px; }
+  .userInfo { font-size: 12px; }
+  .userRole { display: none; }
+}
+
+@media (max-width: 480px) {
+  .brand { display: none; }
+  .header { grid-template-columns: auto 1fr; }
+  .hamburger { order: 2; }
+  .rightGroup { order: 3; }
+  .nav { left: 8px; right: 8px; }
+}
+
+@media (max-width: 380px) {
+  .loginBtn, .dashBtn, .logoutBtn { padding: 6px 8px; font-size: 12px; }
+  .hamburger { width: 34px; height: 34px; }
+  .navLink { font-size: 15px; }
+}

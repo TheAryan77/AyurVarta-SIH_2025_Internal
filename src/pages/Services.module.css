@@ -126,3 +126,20 @@
     padding: 48px 16px;
   }
 }
+
+@media (max-width: 680px) {
+  .extraContent { grid-template-columns: 1fr; gap: 32px; }
+  .illustration { max-width: 100%; }
+  .actionsRow { flex-direction: column; }
+  .secondaryBtn, .ctaButton { width: 100%; text-align: center; }
+  .serviceList { padding: 32px 16px; }
+  .serviceCard { padding: 18px 16px; }
+  .textBlock h2 { font-size: 26px; }
+}
+
+@media (max-width: 480px) {
+  .services .hero { padding: 32px 16px; }
+  .ctaButton { width: 100%; font-size: 16px; padding: 14px 18px; }
+  .points li { font-size: 13px; }
+  .textBlock p { font-size: 14px; }
+}

@@ -396,3 +396,33 @@
   .gridContainer { grid-template-columns: 1fr; }
   .mealPlan { flex-direction: column; }
 }
+
+@media (max-width: 720px) {
+  .planCard { padding: 28px 20px; width: 100%; }
+  .itemList { grid-template-columns: 1fr 1fr; }
+  .mealPlan { gap: 28px; }
+  .planSection { padding: 16px; }
+  .profileCard { padding: 14px; }
+}
+
+@media (max-width: 560px) {
+  .dietPlan { padding: 8px 10px 80px; }
+  .planCard { padding: 24px 18px; }
+  .itemList { grid-template-columns: 1fr; }
+  .sectionHeader { flex-direction: row; gap: 10px; }
+  .sectionIcon { width: 34px; height: 34px; }
+  .actions { flex-direction: column; gap: 14px; }
+  .downloadButton { width: 100%; font-size: 16px; padding: 14px 20px; }
+  .regenerateButton { width: 100%; }
+  .primaryBtn, .secondaryBtn { width: 100%; text-align: center; }
+  .statusItem { flex-direction: column; align-items: flex-start; }
+  .assessmentBtn { margin-left: 0; margin-top: 10px; }
+}
+
+@media (max-width: 420px) {
+  .planCard { padding: 20px 14px; }
+  .chipsCol { padding: 12px; }
+  .chip { font-size: 12px; }
+  .goalList { font-size: 14px; }
+  .downloadButton { font-size: 15px; }
+}

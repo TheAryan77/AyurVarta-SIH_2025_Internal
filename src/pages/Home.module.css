@@ -427,6 +427,48 @@
     }
 }
 
+/* General responsive adjustments */
+@media (max-width: 900px) {
+    .heroTwoCol { grid-template-columns: 1fr; padding: 60px 22px; }
+    .heroImageWrap { order: 2; min-height: 320px; }
+    .heroTitle { font-size: 44px; }
+    .heroBody { font-size: 17px; }
+    .heroCtas { flex-wrap: wrap; }
+}
+
+@media (max-width: 680px) {
+    .heroTwoCol { padding: 56px 18px; gap: 36px; }
+    .heroTitle { font-size: 38px; }
+    .featureSection, .trust, .testimonials, .servicesIntro { padding: 56px 18px; }
+    .trustGrid, .testimonialGrid, .serviceCards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .featureTitle { font-size: 24px; }
+    .sectionTitle { font-size: 32px; }
+}
+
+@media (max-width: 560px) {
+    .heroTwoCol { padding: 52px 16px 32px; }
+    .heroTitle { font-size: 34px; }
+    .heroBody { font-size: 16px; }
+    .heroCtas { flex-direction: column; align-items: stretch; }
+    .ctaButton, .ctaPrimary, .ctaAccent, .ctaGhost, .dietbutton { width: 100%; text-align: center; }
+    .doshaIcons { flex-wrap: wrap; }
+    .doshaIconCard { width: calc(50% - 12px); }
+    .trustGrid, .testimonialGrid, .serviceCards { grid-template-columns: 1fr 1fr; }
+    .featurePoints { grid-template-columns: 1fr; }
+    .featureCard { border-width: 1px; }
+}
+
+@media (max-width: 420px) {
+    .heroTitle { font-size: 30px; }
+    .heroBody { font-size: 15px; }
+    .doshaIconCard { width: 100%; }
+    .trustGrid, .testimonialGrid, .serviceCards { grid-template-columns: 1fr; }
+    .sectionTitle { font-size: 28px; }
+    .featureTitle { font-size: 22px; }
+    .featureContent { padding: 20px 18px; }
+    .featureImageWrap { min-height: 240px; }
+}
+
 /* Trust section */
 .trust {
     padding: 72px 24px;
