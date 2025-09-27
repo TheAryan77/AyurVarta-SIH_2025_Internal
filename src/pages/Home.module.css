@@ -1,3 +1,42 @@
+.reminderPop {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 72px;
+    background: var(--secondary-orange);
+    color: #fff;
+    padding: 10px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 20;
+    animation: slideDown 700ms ease-out, pulseGlow 2.5s ease-in-out infinite 1s;
+}
+
+.reminderPop:hover { background: var(--primary-green); }
+
+.reminderBtn {
+    background: #ffffff;
+    color: #2c3e50;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translate(-50%, -12px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 8px 20px rgba(232,131,91,0.25); }
+    50% { box-shadow: 0 8px 24px rgba(61,90,70,0.28); }
+}
+
+.home { cursor: var(--lotus-cursor); }
 /* Two-column Hero */
 .heroTwoCol {
     display: grid;

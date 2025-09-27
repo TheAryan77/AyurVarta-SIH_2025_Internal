@@ -4,6 +4,7 @@ import BlurText from '../components/BlurText';
 import styles from './Home.module.css';
 import faqStyles from './Faq.module.css';
 import headerStyles from '../components/Header.module.css';
+import AgniDailyModal from '../components/AgniDailyModal';
 
 const blogPosts = [
   {
@@ -46,9 +47,11 @@ const HOME_FAQS = [
 
 const Home = () => {
   const [openTeaser, setOpenTeaser] = useState({});
+  const [agniOpen, setAgniOpen] = useState(false);
   const toggleTeaser = (idx) => setOpenTeaser((o) => ({ ...o, [idx]: !o[idx] }));
   return (
     <div className={styles.home}>
+  {/* Daily reminder moved to Dashboard */}
       {/* Hero Section - Two Column */}
       <section
         className={`${styles.heroTwoCol} ${styles.patternBase} reveal`}
@@ -128,7 +131,7 @@ const Home = () => {
                 <li>Light, early dinner; calming evening wind-down</li>
               </ul>
               <div className={styles.featureCta}>
-                <Link to="/diet-plan" className={`${styles.dietbutton} ${styles.dietbutton2}`}>View Diet Plan</Link>
+                <Link to="/diet-plan" className={`${styles.dietbuttaon} ${styles.dietbutton2}`}>View Diet Plan</Link>
               </div>
             </div>
           </article>
@@ -248,6 +251,12 @@ const Home = () => {
             <Link to="/services" className={`${styles.ctaLink}`}>Book Now</Link>
           </div>
           <div className={styles.serviceCard}>
+            <img src="/images/video-consult.png" alt="Video Consultation" />
+            <h3>Video Consultation</h3>
+            <p>Meet your practitioner online via secure, real-time video powered by Agora.</p>
+            <Link to="/video" className={`${styles.ctaLink}`}>Start Video →</Link>
+          </div>
+          <div className={styles.serviceCard}>
             <img src="/images/programs-icon.png" alt="Wellness Programs" />
             <h3>Wellness Programs</h3>
             <p>Follow structured, seasonal programs designed for steady, sustainable transformation.</p>
@@ -317,6 +326,7 @@ const Home = () => {
           <Link to="/faq" className={`${styles.ctaButton} ${styles.ctaGhost}`}>View All FAQs</Link>
         </div>
       </section>
+  <AgniDailyModal open={agniOpen} onClose={() => setAgniOpen(false)} />
     </div>
   );
 };

@@ -1,0 +1,52 @@
+// Firestore Security Rules for AyurVarta
+// Copy these rules to Firebase Console > Firestore Database > Rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can read and write their own user document
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow authenticated users to read all user documents (for general app functionality)
+    match /users/{document=**} {
+      allow read: if request.auth != null;
+    }
+    
+    // Assessment results - users can read/write their own data
+    match /assessments/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Diet plans - users can read/write their own data
+    match /dietPlans/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Public data that all authenticated users can read
+    match /public/{document=**} {
+      allow read: if request.auth != null;
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+/* 
+SETUP INSTRUCTIONS:
+1. Go to https://console.firebase.google.com/project/ayurvarta-d9599
+2. Click on "Firestore Database" in the left sidebar
+3. Click on the "Rules" tab
+4. Replace the existing rules with the content above
+5. Click "Publish" to activate the new rules
+
+These rules allow:
+- Users to manage their own profile data
+- Users to store their own assessment results
+- Users to store their own diet plans
+- All authenticated users to read basic user info (for app functionality)
+*/

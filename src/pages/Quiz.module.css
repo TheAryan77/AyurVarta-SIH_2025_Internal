@@ -67,6 +67,9 @@
     transform: scale(1.05);
 }
 
+/* alias for selection when used via composed classes */
+.selected { border-color: var(--primary-green); transform: scale(1.05); }
+
 .bodyTypeCard img {
     width: 100%;
     height: 150px;

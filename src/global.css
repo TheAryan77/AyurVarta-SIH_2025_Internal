@@ -10,6 +10,19 @@
   --deep-green: #274536;
   --text-color: #2b2b2b;
   --text-muted: #666a6a;
+
+  /* Theme extensions */
+  --green-50: #eef3f0;
+  --green-100: #d7e2db;
+  --green-600: #2f4b3a;
+  --green-700: #21372a;
+  --orange-50: #fff2ec;
+  --orange-100: #ffe3d6;
+  --orange-600: #cf6f4c;
+  --orange-700: #b85f40;
+  --theme-gradient: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-orange) 100%);
+  /* Lotus cursor (emoji-based SVG) */
+  --lotus-cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><text x='8' y='52' font-size='48'>🪷</text></svg>") 16 16, auto;
 }
 
 body {
@@ -34,6 +47,20 @@ a {
   padding: 20px;
 }
 
+
+/* -------- Theme utilities (opt-in) -------- */
+.u-text-green { color: var(--primary-green) !important; }
+.u-text-orange { color: var(--secondary-orange) !important; }
+.u-bg-green { background: var(--primary-green) !important; color: #fff !important; }
+.u-bg-orange { background: var(--secondary-orange) !important; color: #fff !important; }
+.u-border-green { border-color: var(--primary-green) !important; }
+.u-border-orange { border-color: var(--secondary-orange) !important; }
+.u-chip { display:inline-block; padding:6px 10px; border-radius: 999px; border:1px solid rgba(0,0,0,0.08); font-weight:700; }
+.u-chip--green { background: var(--green-50); color: var(--primary-green); border-color: var(--green-100); }
+.u-chip--orange { background: var(--orange-50); color: var(--secondary-orange); border-color: var(--orange-100); }
+.u-gradient { background: var(--theme-gradient); color: #fff; }
+
+
 /* Cursor styles moved to public/index.html to reference %PUBLIC_URL% */
 
 /* Removed custom leaf cursor to restore default cursors */
@@ -51,6 +78,11 @@ a {
 
 .reveal { opacity: 0; will-change: transform, opacity; }
 .reveal.in-view { opacity: 1; }
+/* Safety fallback: if JS fails, reveal after short delay */
+@supports (animation: fadeUp) {
+  .reveal:not(.in-view) { animation: none; }
+}
+.no-intersection .reveal { opacity: 1 !important; }
 
 /* Variants via data-reveal attribute */
 .reveal[data-reveal="fade-up"].in-view { animation: fadeUp 600ms ease forwards; }

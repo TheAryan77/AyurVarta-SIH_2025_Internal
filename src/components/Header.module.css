@@ -68,12 +68,60 @@
   justify-content: center;
 }
 
+.dropdown { position: relative; }
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 10px;
+  background: rgba(255,255,255,0.95);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  border: 1px solid rgba(61,90,70,0.2);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+  opacity: 0; pointer-events: none; transform-origin: top center; transition: opacity .18s ease, transform .18s ease;
+z-index: 2000;
+}
+.dropdown:hover .dropdownMenu { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.dropdown:focus-within .dropdownMenu { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.dropdown:hover > .navLink { color: var(--secondary-orange); }
+.dropCard {
+  border: 1px solid rgba(61,90,70,0.18);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fff;
+  transition: transform .16s ease, box-shadow .2s ease, border-color .16s ease, background .2s ease;
+}
+.dropCard:hover {
+  border-color: var(--secondary-orange);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+  transform: translateY(-3px) scale(1.02);
+  background: linear-gradient(180deg, #ffffff 0%, #fff8f0 100%);
+}
+.dropCard h4 { color: var(--primary-green); margin: 0 0 6px; }
+.dropCard p { color: var(--text-dark); margin: 0; font-size: 14px; }
+
 .rightGroup {
   display: flex;
   align-items: center;
   gap: 10px;
   justify-self: end;
 }
+
+.dashBtn {
+  background: var(--cream-bg);
+  color: var(--secondary-orange);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  border: 1px solid var(--orange-100);
+}
+.dashBtn:hover { background: #fff8f0; color: var(--secondary-orange); border-color: var(--orange-600); }
 
 .loginBtn {
   background: var(--deep-green) ;
@@ -84,6 +132,41 @@
   border: 1px solid rgba(61,90,70,0.35);
 }
 .loginBtn:hover { background: var(--secondary-orange); color: #fff; }
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userInfo {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.userRole {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.logoutBtn {
+  background: var(--deep-green);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid rgba(61,90,70,0.35);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.logoutBtn:hover { 
+  background: var(--secondary-orange); 
+  color: #fff; 
+}
 
 .navLink {
   position: relative;
@@ -154,4 +237,15 @@
   }
   .open { display: flex; }
   .hamburger { display: inline-flex; }
+
+  .dropdownMenu {
+    position: static;
+    transform: none;
+    grid-template-columns: 1fr;
+    box-shadow: none;
+    padding: 6px 0 0;
+    border: none;
+    background: transparent;
+  opacity: 1; pointer-events: auto;
+  }
 }

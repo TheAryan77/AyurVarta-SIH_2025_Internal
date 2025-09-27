@@ -1,12 +1,53 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Quiz.module.css';
+import pageStyles from './Assessment.module.css';
 import { mockQuizQuestions } from '../data/mockQuizQuestions';
 
 const Quiz = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const navigate = useNavigate();
+
+  const computeDoshaScores = () => {
+    const scores = { Vata: 0, Pitta: 0, Kapha: 0 };
+    mockQuizQuestions.forEach((q, i) => {
+      const ans = answers[i];
+      if (!ans) return;
+      switch (q.questionType) {
+        case 'dosha-selection': {
+          if (ans === 'Vata') scores.Vata += 1;
+          if (ans === 'Pitta') scores.Pitta += 1;
+          if (ans === 'Kapha') scores.Kapha += 1;
+          break;
+        }
+        case 'body-type-ranking': {
+          if (ans.includes('Thin')) scores.Vata += 1;
+          else if (ans.includes('Medium')) scores.Pitta += 1;
+          else if (ans.includes('Big')) scores.Kapha += 1;
+          break;
+        }
+        case 'characteristic-checkbox': {
+          const arr = Array.isArray(ans) ? ans : [];
+          arr.forEach(t => {
+            if (t.startsWith('Creative') || t.startsWith('Anxious')) scores.Vata += 1;
+            else if (t.startsWith('Passionate')) scores.Pitta += 1;
+            else if (t.startsWith('Calm')) scores.Kapha += 1;
+          });
+          break;
+        }
+        case 'radio-select': {
+          if (ans.startsWith('Strong')) scores.Pitta += 1;
+          else if (ans.startsWith('Irregular')) scores.Vata += 1;
+          else if (ans.startsWith('Slow')) scores.Kapha += 1;
+          break;
+        }
+        default:
+          break;
+      }
+    });
+    return scores;
+  };
 
   const handleAnswer = (questionType, optionValue) => {
     const currentAnswer = answers[currentQuestionIndex];
@@ -32,7 +73,10 @@ const Quiz = () => {
     if (currentQuestionIndex < mockQuizQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Logic to process answers can be added here
+  const scores = computeDoshaScores();
+  // Log final scores to console
+  // eslint-disable-next-line no-console
+  console.log('[Dosha Quiz] Scores:', scores);
       navigate('/diet-plan');
     }
   };
@@ -122,29 +166,33 @@ const Quiz = () => {
   const currentQuestion = mockQuizQuestions[currentQuestionIndex];
 
   return (
-    <div className={styles.quiz}>
-      <div className={styles.quizCard}>
-        { currentQuestion.questionType !== 'dosha-selection' &&
-            <p className={styles.progressIndicator}>
-              QUESTION {currentQuestionIndex} OF {mockQuizQuestions.length - 1}
-            </p>
-        }
-        <h2>{currentQuestion.questionText}</h2>
-
-        <div className={styles.questionContent}>
-            {renderQuestion()}
-        </div>
-
-        <div className={styles.navigation}>
-          {currentQuestionIndex > 0 && (
-            <button onClick={handleBack} className={styles.navButton}>Back</button>
+    <section className={pageStyles.page} data-reveal>
+      <h1 className={pageStyles.title}>Dosha Quiz</h1>
+      <p className={pageStyles.subtitle}>Find your dominant dosha with a quick, visual quiz.</p>
+      <div className={styles.quiz}>
+        <div className={styles.quizCard}>
+          { currentQuestion.questionType !== 'dosha-selection' && (
+              <p className={styles.progressIndicator}>
+                QUESTION {currentQuestionIndex + 1} OF {mockQuizQuestions.length}
+              </p>
           )}
-          <button onClick={handleNext} className={styles.navButton}>
-              {currentQuestionIndex === mockQuizQuestions.length - 1 ? 'View My Plan' : 'Continue'}
-          </button>
+          <h2>{currentQuestion.questionText}</h2>
+
+          <div className={styles.questionContent}>
+              {renderQuestion()}
+          </div>
+
+          <div className={styles.navigation}>
+            {currentQuestionIndex > 0 && (
+              <button onClick={handleBack} className={styles.navButton}>Back</button>
+            )}
+            <button onClick={handleNext} className={styles.navButton}>
+                {currentQuestionIndex === mockQuizQuestions.length - 1 ? 'View My Plan' : 'Continue'}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
