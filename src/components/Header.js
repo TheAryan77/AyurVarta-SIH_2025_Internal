@@ -39,29 +39,8 @@ const Header = () => {
         <Link to="/about" className={styles.navLink}>About</Link>
         <Link to="/quiz" className={styles.navLink}>Dosha</Link>
         <Link to="/diet-plan" className={styles.navLink}>Diet</Link>
-        <Link to="/services" className={styles.navLink}>Services</Link>
+  <Link to="/services" className={styles.navLink}>Services</Link>
   <Link to="/faq" className={styles.navLink}>FAQ</Link>
-        <div className={styles.dropdown}>
-          <span className={styles.navLink}>Assessment ▾</span>
-          <div className={styles.dropdownMenu}>
-            <Link to="/assessment/prakriti" className={styles.dropCard}>
-              <h4>Prakriti</h4>
-              <p>Inherent constitution</p>
-            </Link>
-            <Link to="/assessment/vikriti" className={styles.dropCard}>
-              <h4>Vikriti</h4>
-              <p>Current imbalance</p>
-            </Link>
-            <Link to="/assessment/agni" className={styles.dropCard}>
-              <h4>Agni</h4>
-              <p>Digestive fire</p>
-            </Link>
-            <Link to="/assessment/combined" className={styles.dropCard}>
-              <h4>Combine All</h4>
-              <p>Full flow</p>
-            </Link>
-          </div>
-        </div>
       </nav>
       <div className={styles.rightGroup}>
         {pathname.startsWith('/dashboard') ? (

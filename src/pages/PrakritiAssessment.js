@@ -32,6 +32,7 @@ export default function PrakritiAssessment() {
                   options={options}
                   selected={answers[q.id]}
                   onSelect={(val) => onChange(q.id, val)}
+                  circular={idx >= 1} /* questions 2-7 (index 1 onward) */
                 />
               </div>
               <div className={quizStyles.navigation}>

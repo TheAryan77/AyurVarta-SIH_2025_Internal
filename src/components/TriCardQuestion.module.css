@@ -3,3 +3,5 @@
 .cards { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
 .cardSelected { border-color: var(--primary-green) !important; transform: scale(1.05); }
 .cardTitle { margin: 0; color: var(--primary-green); }
+
+/* Circular image style (applied conditionally) */

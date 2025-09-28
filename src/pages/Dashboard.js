@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import { userProfile, currentDosha, currentDietPlan, dailyStats, nutrientsSuggested, improvementSeries, sleepSeries, records } from '../data/userDashboard';
+import { useAuth } from '../contexts/AuthContext';
 import { Line, Doughnut } from 'react-chartjs-2';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -43,6 +44,8 @@ export default function Dashboard() {
   const [agniOpen, setAgniOpen] = useState(false);
   const [showReminder, setShowReminder] = useState(true);
   const savedFood = useMemo(() => loadSavedFood(), []);
+  const { userDocument, currentUser } = useAuth();
+  const displayName = (userDocument?.displayName || currentUser?.displayName || userProfile.name || currentUser?.email?.split('@')[0] || 'User');
 
   const handleDownloadPNG = async () => {
     if (!printRef.current) return;
@@ -109,7 +112,7 @@ export default function Dashboard() {
         <div className={styles.profile}>
           <img className={styles.avatar} src={userProfile.avatar} alt={userProfile.name} />
           <div>
-            <h1 className={styles.title}>Welcome back, {userProfile.name.split(' ')[0]}</h1>
+            <h1 className={styles.title}>Welcome back, {displayName.split(' ')[0]}</h1>
             <p className={styles.subtitle}>Your current snapshot and progress • <em>{saved?.role || 'as Dietitian'}</em></p>
           </div>
         </div>
