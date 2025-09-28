@@ -20,7 +20,7 @@ export default function PrakritiAssessment() {
         <div className={quizStyles.quizCard}>
           {(() => {
           const q = PRAKRITI_QUESTIONS[idx];
-          const options = toTriCardOptions(q.options);
+          const options = toTriCardOptions(q.options, q.id);
           return (
             <>
               <p className={quizStyles.progressIndicator}>

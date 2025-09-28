@@ -125,10 +125,22 @@ export const AGNI_QUESTIONS = [
   { id: 'ag5', q: 'Thirst across the day is…', options: ['Variable', 'High', 'Low'] }
 ];
 
-// Map 3-options question into tri-card options with placeholder images (body types for now)
-export const toTriCardOptions = (options) => {
-  const imgs = ['/images/thin-silhouette.png', '/images/medium-silhouette.png', '/images/big-silhouette.png'];
-  return options.slice(0, 3).map((label, idx) => ({ label, value: label, image: imgs[idx] }));
+
+// Map 3-option Prakriti question with dynamic images following naming: pq{questionNumber}op{optionNumber}.png
+// Example: second question option 1 => /images/pq2op1.png
+export const toTriCardOptions = (options, questionId) => {
+  // Expect questionId like 'pr3' -> extract number 3
+  let qNum = 0;
+  if (typeof questionId === 'string') {
+    const m = questionId.match(/pr(\d+)/i);
+    if (m) qNum = parseInt(m[1], 10);
+  }
+  return options.slice(0, 3).map((label, idx) => {
+    const image = qNum
+      ? `/images/pq${qNum}op${idx + 1}.png`
+      : ['/images/thin-silhouette.png', '/images/medium-silhouette.png', '/images/big-silhouette.png'][idx];
+    return { label, value: label, image };
+  });
 };
 
 // Helper to map 4-option Agni-style items to radio list (no images)
