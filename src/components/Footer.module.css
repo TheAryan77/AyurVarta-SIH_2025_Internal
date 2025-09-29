@@ -112,7 +112,32 @@
 }
 
 @media (max-width: 540px) {
+  .footer {
+    padding: 40px 16px 20px;
+  }
+  
   .footerContainer {
     grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+  
+  .footerColumn {
+    min-width: auto;
+  }
+  
+  .logo {
+    width: 100px;
+    margin: 0 auto 12px;
+    display: block;
+  }
+  
+  .socialIcons {
+    justify-content: center;
+  }
+  
+  .newsletterForm {
+    max-width: 280px;
+    margin: 0 auto;
   }
 }

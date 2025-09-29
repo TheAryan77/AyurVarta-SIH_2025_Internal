@@ -185,3 +185,34 @@
 .navButton:hover {
     background-color: var(--secondary-orange);
 }
+
+/* Mobile responsive breakpoints */
+@media (max-width: 768px) {
+  .quiz { min-height: 70vh; padding: 0 12px; }
+  .quizCard { width: 95%; padding: 24px 20px; }
+  .doshaOptions, .bodyTypeOptions { gap: 12px; flex-wrap: wrap; }
+  .doshaCard, .bodyTypeCard { width: 160px; padding: 16px; }
+  .doshaCard img { height: 100px; }
+  .bodyTypeCard img { height: 120px; }
+  .characteristicOptions { grid-template-columns: 1fr; gap: 12px; }
+  .navigation { flex-direction: column; gap: 12px; }
+  .navButton { width: 100%; padding: 14px 20px; }
+}
+
+@media (max-width: 560px) {
+  .quizCard { padding: 20px 16px; }
+  .doshaOptions, .bodyTypeOptions { flex-direction: column; align-items: center; }
+  .doshaCard, .bodyTypeCard { width: 200px; }
+  .radioOptions { gap: 12px; }
+  .radioLabel { padding: 12px; }
+  .questionContent { min-height: 250px; }
+}
+
+@media (max-width: 420px) {
+  .quiz { padding: 0 8px; }
+  .quizCard { padding: 16px 12px; }
+  .doshaCard, .bodyTypeCard { width: 180px; padding: 12px; }
+  .doshaCard img { height: 80px; }
+  .bodyTypeCard img { height: 100px; }
+  .progressIndicator { font-size: 12px; }
+}
