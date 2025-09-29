@@ -52,7 +52,7 @@ const Footer = () => {
       </div>
 
       <div className={styles.footerBottom}>
-        <p>&copy; {new Date().getFullYear()} 2025 AyurVarta. Built by <strong>Gang Glitch</strong>.All Rights Reserved. </p>
+        <p>&copy; {new Date().getFullYear()} AyurVarta. Built by <strong>Gang Glitch</strong>.All Rights Reserved. </p>
       </div>
     </footer>
   );
