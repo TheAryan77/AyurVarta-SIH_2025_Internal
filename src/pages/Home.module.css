@@ -76,13 +76,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 280px;
-    height: 280px;
+    width: 370px;
+    height: 370px;
 }
 
 .heroLogoImg {
-    width: 260px !important;
-    height: 260px !important;
+    width: 350px !important;
+    height: 350px !important;
 }
 
 /* soft ambient glow */
@@ -155,8 +155,8 @@
 }
 
 .heroTitle {
-    font-size: 42px;
-    line-height: 1.1;
+    font-size: 50px;
+    line-height: 1.08;
     margin-bottom: 16px;
 }
 
@@ -430,17 +430,17 @@
 /* General responsive adjustments */
 @media (max-width: 900px) {
   .heroTwoCol { grid-template-columns: 1fr; padding: 60px 22px; }
-  .heroImageWrap { order: 2; min-height: 280px; }
-  .heroLogoWrap { width: 240px; height: 240px; }
-  .heroLogoImg { width: 220px !important; height: 220px !important; }
-  .heroTitle { font-size: 36px; }
+  .heroImageWrap { order: 2; min-height: 320px; }
+  .heroLogoWrap { width: 280px; height: 280px; }
+  .heroLogoImg { width: 260px !important; height: 260px !important; }
+  .heroTitle { font-size: 42px; }
   .heroBody { font-size: 17px; }
   .heroCtas { flex-wrap: wrap; }
 }@media (max-width: 680px) {
     .heroTwoCol { padding: 56px 18px; gap: 36px; }
-    .heroLogoWrap { width: 200px; height: 200px; }
-    .heroLogoImg { width: 180px !important; height: 180px !important; }
-    .heroTitle { font-size: 32px; }
+    .heroLogoWrap { width: 220px; height: 220px; }
+    .heroLogoImg { width: 200px !important; height: 200px !important; }
+    .heroTitle { font-size: 36px; }
     .featureSection, .trust, .testimonials, .servicesIntro { padding: 56px 18px; }
     .trustGrid, .testimonialGrid, .serviceCards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .featureTitle { font-size: 24px; }
