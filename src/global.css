@@ -25,8 +25,22 @@
   --lotus-cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><text x='8' y='52' font-size='48'>🪷</text></svg>") 16 16, auto;
 }
 
-/* Fluid typography base (clamp) */
-html { font-size: clamp(15px, 0.95vw + 11px, 18px); }
+/* Universal box-sizing and mobile fixes */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: clamp(15px, 0.95vw + 11px, 18px);
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Root container fixes */
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
 /* Utility visibility helpers */
 .u-hide-mobile { display: initial; }
@@ -39,6 +53,11 @@ body {
   font-family: 'Lora', serif;
   color: var(--text-dark);
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -93,6 +112,32 @@ a {
   .reveal:not(.in-view) { animation: none; }
 }
 .no-intersection .reveal { opacity: 1 !important; }
+
+/* Mobile viewport and centering fixes */
+@media screen and (max-width: 768px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+  
+  /* Prevent horizontal overflow */
+  .container, [class*="Container"], [class*="container"] {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Fix common layout issues */
+  img, svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Ensure proper touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
 
 /* Variants via data-reveal attribute */
 .reveal[data-reveal="fade-up"].in-view { animation: fadeUp 600ms ease forwards; }
