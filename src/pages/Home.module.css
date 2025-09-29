@@ -76,13 +76,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 370px;
-    height: 370px;
+    width: 280px;
+    height: 280px;
 }
 
 .heroLogoImg {
-    width: 350px !important;
-    height: 350px !important;
+    width: 260px !important;
+    height: 260px !important;
 }
 
 /* soft ambient glow */
@@ -155,8 +155,8 @@
 }
 
 .heroTitle {
-    font-size: 50px;
-    line-height: 1.08;
+    font-size: 42px;
+    line-height: 1.1;
     margin-bottom: 16px;
 }
 
@@ -429,16 +429,18 @@
 
 /* General responsive adjustments */
 @media (max-width: 900px) {
-    .heroTwoCol { grid-template-columns: 1fr; padding: 60px 22px; }
-    .heroImageWrap { order: 2; min-height: 320px; }
-    .heroTitle { font-size: 44px; }
-    .heroBody { font-size: 17px; }
-    .heroCtas { flex-wrap: wrap; }
-}
-
-@media (max-width: 680px) {
+  .heroTwoCol { grid-template-columns: 1fr; padding: 60px 22px; }
+  .heroImageWrap { order: 2; min-height: 280px; }
+  .heroLogoWrap { width: 240px; height: 240px; }
+  .heroLogoImg { width: 220px !important; height: 220px !important; }
+  .heroTitle { font-size: 36px; }
+  .heroBody { font-size: 17px; }
+  .heroCtas { flex-wrap: wrap; }
+}@media (max-width: 680px) {
     .heroTwoCol { padding: 56px 18px; gap: 36px; }
-    .heroTitle { font-size: 38px; }
+    .heroLogoWrap { width: 200px; height: 200px; }
+    .heroLogoImg { width: 180px !important; height: 180px !important; }
+    .heroTitle { font-size: 32px; }
     .featureSection, .trust, .testimonials, .servicesIntro { padding: 56px 18px; }
     .trustGrid, .testimonialGrid, .serviceCards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     .featureTitle { font-size: 24px; }
@@ -447,7 +449,9 @@
 
 @media (max-width: 560px) {
     .heroTwoCol { padding: 52px 16px 32px; }
-    .heroTitle { font-size: 34px; }
+    .heroLogoWrap { width: 160px; height: 160px; }
+    .heroLogoImg { width: 140px !important; height: 140px !important; }
+    .heroTitle { font-size: 28px; }
     .heroBody { font-size: 16px; }
     .heroCtas { flex-direction: column; align-items: stretch; }
     .ctaButton, .ctaPrimary, .ctaAccent, .ctaGhost, .dietbutton { width: 100%; text-align: center; }
@@ -459,7 +463,9 @@
 }
 
 @media (max-width: 420px) {
-    .heroTitle { font-size: 30px; }
+    .heroLogoWrap { width: 140px; height: 140px; }
+    .heroLogoImg { width: 120px !important; height: 120px !important; }
+    .heroTitle { font-size: 24px; }
     .heroBody { font-size: 15px; }
     .doshaIconCard { width: 100%; }
     .trustGrid, .testimonialGrid, .serviceCards { grid-template-columns: 1fr; }
